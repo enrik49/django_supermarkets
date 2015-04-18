@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 #from django.core.urlresolvers import reverse
 #from datetime import date
 
-'''class Companyia(models.Model):
+class Companyia(models.Model):
 	name = models.TextField()
 
 class Sucursal(models.Model):
@@ -17,4 +17,4 @@ class Marca(models.Model):
 	name = models.TextField()
 
 class Producte(models.Model):
-	name = models.TextField()'''
+	name = models.TextField()
