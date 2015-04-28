@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>
+	Marca:
+</h1>
+<ul>
+	{% for Marca in Marca_list  %}
+		<li>{{Marca.name}}</li>
+	{% endfor %}
+</ul>
+{% endblock %}

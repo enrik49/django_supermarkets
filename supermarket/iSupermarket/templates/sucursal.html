@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>
+	Sucursal:
+</h1>
+<ul>
+	{% for Sucursal in Sucursal_list  %}
+		<li>{{Sucursal.name}}</li>
+	{% endfor %}
+</ul>
+{% endblock %}
