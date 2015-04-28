@@ -9,14 +9,14 @@
 	</h1>
 		<ul>
 			<h2>Recents:</h2>
-			{% for client in clients_list %}
-				{% if client.was_registered_recently == true %}
+			{% for client in clients_list %}				
+				{% if client.was_registred_recently == True %}
 					<li>{{client.name}} {{client.lastName}}</li>
 				{% endif %}
 			{% endfor %}
 		<h2>Vells:</h2>
-			{% for client in clients_list %}
-				{% if client.was_registered_recently == false %}
+			{% for client in clients_list  %}
+				{% if client.was_registred_recently == False %}
 					<li>{{client.name}} {{client.lastName}}</li>
 				{% endif %}
 			{% endfor %}
