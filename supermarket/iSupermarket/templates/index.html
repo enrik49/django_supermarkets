@@ -1,6 +1,25 @@
-<html>
-	<head></head>
-	<body>
-		<h1>Provant</h1>
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+	<h1>
+		Clients:
+	</h1>
+		<ul>
+			<h2>Recents:</h2>
+			{% for client in clients_list %}
+				{% if client.was_registered_recently == true %}
+					<li>{{client.name}} {{client.lastName}}</li>
+				{% endif %}
+			{% endfor %}
+		<h2>Vells:</h2>
+			{% for client in clients_list %}
+				{% if client.was_registered_recently == false %}
+					<li>{{client.name}} {{client.lastName}}</li>
+				{% endif %}
+			{% endfor %}
+		</ul>
 	</body>
-</html>
+	</html>

@@ -13,6 +13,7 @@ class Inici(ListView):
     model = Client
     template_name = 'index.html'
     queryset = Client.objects.all()
+    context_object_name='clients_list'
 
 '''class RestaurantCreate(CreateView):
     model = Restaurant
