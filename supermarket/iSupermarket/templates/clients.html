@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>
+	Clients:
+</h1>
+<ul>
+	<!--<h2>Recents:</h2>
+	{% for client in clients_list %}				
+		{% if client.was_registred_recently == True %}
+			<li>{{client.name}} {{client.lastName}}</li>
+		{% endif %}
+	{% endfor %}
+	<h2>Vells:</h2>-->
+	{% for client in clients_list  %}
+		{% if client.was_registred_recently == False %}
+			<li>{{client.name}} {{client.lastName}}</li>
+		{% endif %}
+	{% endfor %}
+</ul>
+{% endblock %}
+
+<!--{% block footer %}
+    Created by {{ dish.user }} on {{ dish.date }}
+{% endblock %}-->

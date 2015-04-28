@@ -1,25 +1,15 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-</head>
-<body>
-	<h1>
-		Clients:
-	</h1>
-		<ul>
-			<h2>Recents:</h2>
-			{% for client in clients_list %}				
-				{% if client.was_registred_recently == True %}
-					<li>{{client.name}} {{client.lastName}}</li>
-				{% endif %}
-			{% endfor %}
-		<h2>Vells:</h2>
-			{% for client in clients_list  %}
-				{% if client.was_registred_recently == False %}
-					<li>{{client.name}} {{client.lastName}}</li>
-				{% endif %}
-			{% endfor %}
-		</ul>
-	</body>
-	</html>
+{% extends "base.html" %}
+
+{% block content %}
+<h1>
+	Clients:
+</h1>
+<ul>
+	<!-- Estic fent de prova aixo ho tindrem que mirar com agafar les taules automaticament-->
+	<li><a href="/app/Client">Client</a></li>
+	<li><a href="/app/Companyia">Companyia</a></li>
+	<li><a href="/app/Marca">Marca</a></li>
+	<li><a href="/app/Producte">Producte</a></li>
+	<li><a href="/app/Sucursal">Sucursal</a></li>
+</ul>
+{% endblock %}

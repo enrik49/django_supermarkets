@@ -1,0 +1,3 @@
+#Aquest fitxer serveix per deixar els problemes que no arreglem pero que es tenen que mirar
+
+	-En l'apartat de templates index.html es te que mirar com agafar totes les taules en comptes de com ho he ficat jo a ma

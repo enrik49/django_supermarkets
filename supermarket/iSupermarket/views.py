@@ -13,7 +13,36 @@ class Inici(ListView):
     model = Client
     template_name = 'index.html'
     queryset = Client.objects.all()
+
+class Client(ListView):
+    model = Client
+    template_name = 'clients.html'
+    queryset = Client.objects.all()
     context_object_name='clients_list'
+
+class Companyia(ListView):
+    model = Companyia
+    template_name = 'companyia.html'
+    queryset = Companyia.objects.all()
+    context_object_name='Companyia_list'
+
+class Sucursal(ListView):
+    model = Sucursal
+    template_name = 'sucursal.html'
+    queryset = Sucursal.objects.all()
+    context_object_name='Sucursal_list'
+
+class Marca(ListView):
+    model = Marca
+    template_name = 'marca.html'
+    queryset = Marca.objects.all()
+    context_object_name='Marca_list'
+
+class Producte(ListView):
+    model = Producte
+    template_name = 'producte.html'
+    queryset = Producte.objects.all()
+    context_object_name='Producte_list'
 
 '''class RestaurantCreate(CreateView):
     model = Restaurant

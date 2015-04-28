@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>
+	Companyia:
+</h1>
+<ul>
+	{% for Companyia in Companyia_list  %}
+		<li>{{Companyia.name}}</li>
+	{% endfor %}
+</ul>
+{% endblock %}
