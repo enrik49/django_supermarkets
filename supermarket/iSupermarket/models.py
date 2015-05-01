@@ -1,9 +1,10 @@
 # Create your models here.
 from django.db import models
 from django.contrib.auth.models import User
-#from django.core.urlresolvers import reverse
-import datetime 
+from django.core.urlresolvers import reverse
+import datetime
 from django.utils import timezone
+#from datetime import date
 
 
 class Companyia(models.Model):
@@ -31,13 +32,16 @@ class Client(models.Model):
 	name = models.CharField(max_length=20)
 	lastName = models.CharField(null=True,max_length=20)
 	phone = models.CharField(null=True,max_length=9)
-	registration_date = models.DateTimeField('date registred', null=True)
+	registration_date = models.DateTimeField()
 
 	def was_registred_recently(self):
 		return self.registration_date >= timezone.now() - datetime.timedelta(days=1)
 
 	def __unicode__(self):
 		return self.name + ' ' + self.lastName
+
+	def get_absolute_url(self):
+		return reverse('iSupermarket:client_detail', kwargs={'pk':self.pk})
 
 class Marca(models.Model):
 	name = models.TextField(null=True)

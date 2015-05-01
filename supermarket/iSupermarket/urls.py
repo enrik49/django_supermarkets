@@ -3,6 +3,7 @@ from models import *
 #from filmApplication.forms import ActorForm, DirectorForm, MovieForm, ReviewForm
 from views import *
 from django.contrib import admin
+#from forms import ClientForm
 
 
 admin.autodiscover()
@@ -15,4 +16,5 @@ urlpatterns = patterns('',
     url(r'^Producte/$',Producte.as_view()),
     url(r'^Companyia/$',Companyia.as_view()),
     url(r'^Sucursal/$',Sucursal.as_view()),
+    url(r'^Client/(?P<pk>\d+)/$',ClientDetail.as_view(),name='client_detail'),
 )

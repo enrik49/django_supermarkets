@@ -6,7 +6,7 @@
 </h1>
 <ul>
 	<!--<h2>Recents:</h2>
-	{% for client in clients_list %}				
+	{% for client in clients_list %}
 		{% if client.was_registred_recently == True %}
 			<li>{{client.name}} {{client.lastName}}</li>
 		{% endif %}
@@ -14,7 +14,9 @@
 	<h2>Vells:</h2>-->
 	{% for client in clients_list  %}
 		{% if client.was_registred_recently == False %}
-			<li>{{client.name}} {{client.lastName}}</li>
+		<!--<li>{{client.name}} {{client.lastName}}</li>-->
+			<li><a href="{% url	'iSupermarket:client_detail' client.id %}">{{client.name}} {{client.lastName}}</a></li>
+
 		{% endif %}
 	{% endfor %}
 </ul>

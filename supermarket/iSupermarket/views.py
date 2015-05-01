@@ -1,5 +1,5 @@
 # Create your views here.
-
+from django.core.urlresolvers import reverse
 from django.core import urlresolvers
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
@@ -7,18 +7,26 @@ from django.views.generic import DetailView, ListView
 from django.views.generic.edit import CreateView
 
 from models import Client, Companyia, Marca, Producte, Sucursal
-#from forms import RestaurantForm, DishForm
+#from forms import ClientForm
 
 class Inici(ListView):
-    model = Client
+    model = Client #Aixo ha de quedar aixi ara que ja no llistem clients.
     template_name = 'index.html'
-    queryset = Client.objects.all()
+    queryset = Client.objects.all() #Comentari = al anterior.
 
 class Client(ListView):
     model = Client
     template_name = 'clients.html'
     queryset = Client.objects.all()
     context_object_name='clients_list'
+
+class ClientDetail(DetailView):
+    model = Client
+    template_name = 'client_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ClientDetail, self).get_context_data(**kwargs)
+        return context
 
 class Companyia(ListView):
     model = Companyia
@@ -43,6 +51,8 @@ class Producte(ListView):
     template_name = 'producte.html'
     queryset = Producte.objects.all()
     context_object_name='Producte_list'
+
+
 
 '''class RestaurantCreate(CreateView):
     model = Restaurant
