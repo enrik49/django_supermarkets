@@ -9,7 +9,7 @@ from models import Client, Companyia, Marca, Producte, Sucursal
 
 class CompanyiaDetail(DetailView):
     model = Companyia
-    template_name = 'companyia_detail.html'
+    template_name = 'detail_companyia.html'
 
     def get_context_data(self, **kwargs):
        context = super(CompanyiaDetail, self).get_context_data(**kwargs)
@@ -18,7 +18,7 @@ class CompanyiaDetail(DetailView):
 
 class SucursalDetail(DetailView):
     model = Sucursal
-    template_name = 'sucursal_detail.html'
+    template_name = 'detail_sucursal.html'
 
     def get_context_data(self, **kwargs):
        context = super(SucursalDetail, self).get_context_data(**kwargs)
@@ -26,7 +26,7 @@ class SucursalDetail(DetailView):
 
 class MarcaDetail(DetailView):
 	model = Marca
-	template_name = 'marca_detail.html'
+	template_name = 'detail_marca.html'
 
 	def get_context_data(self, **kwargs):
 		context = super(MarcaDetail, self).get_context_data(**kwargs)
@@ -35,7 +35,7 @@ class MarcaDetail(DetailView):
 
 class ProducteDetail(DetailView):
 	model = Producte
-	template_name = 'producte_detail.html'
+	template_name = 'detail_producte.html'
 
 	def get_context_data(self, **kwargs):
 		context = super(ProducteDetail, self).get_context_data(**kwargs)

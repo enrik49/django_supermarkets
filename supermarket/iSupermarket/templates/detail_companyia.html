@@ -1,14 +1,15 @@
 {% extends "base.html" %}
 {% block	content	%}
 <h1>
-  {{ producte }}
+  {{ companyia }}
   <!--{%	if	user	==	restaurant.user	%}
     (<a href="{%	url	'myrestaurants:restaurant_edit'	restaurant.id	%}">edit</a>)
       {%	endif	%}-->
 </h1>
           <h2>Detalls:</h2>
           <p>
-            NOM: {{ producte.name }}<br/>
-            <a href="{% url 'iSupermarket:marca_detail' producte.marca.id %}">{{ producte.marca }}</a>
+            NOM: {{ companyia.name }}<br/>
+            ID: {{ companyia.idNumber }}<br/>
           </p>
-          {% endblock %}
+          <a href="{% url 'iSupermarket:companyia_list' %}">Tornar a la llista</a>
+{% endblock %}

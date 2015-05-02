@@ -3,6 +3,7 @@
 {% block content %}
 <h1>
 	Marca:
+	<a href="{% url 'iSupermarket:marca_create' %}">Afegir nou Marca</a>
 </h1>
 <ul>
 	{% for marca in Marca_list  %}

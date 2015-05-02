@@ -8,6 +8,7 @@ from django.views.generic.edit import CreateView
 
 from models import Client, Companyia, Marca, Producte, Sucursal
 #from forms import ClientForm
+from views_enric import *
 
 class Inici(ListView):
     model = Client #Aixo ha de quedar aixi ara que ja no llistem sol clients.
@@ -22,7 +23,7 @@ class Clients(ListView):
 
 class ClientDetail(DetailView):
     model = Client
-    template_name = 'client_detail.html'
+    template_name = 'detail_client.html'
 
     def get_context_data(self, **kwargs):
        context = super(ClientDetail, self).get_context_data(**kwargs)

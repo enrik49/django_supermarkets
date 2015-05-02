@@ -3,6 +3,7 @@
 {% block content %}
 <h1>
 	Sucursal:
+	<a href="{% url 'iSupermarket:sucursal_create' %}">Afegir nova Sucursal</a>
 </h1>
 <ul>
 	{% for sucursal in Sucursal_list  %}

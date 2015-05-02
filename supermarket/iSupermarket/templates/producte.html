@@ -2,7 +2,8 @@
 
 {% block content %}
 <h1>
-	producte:
+	Producte:
+	<a href="{% url 'iSupermarket:producte_create' %}">Afegir nou Producte</a>
 </h1>
 <ul>
 	{% for producte in Producte_list  %}

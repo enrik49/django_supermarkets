@@ -15,4 +15,5 @@
             <li>{{ sucursal.country }}</li>
             <li><a href="{% url 'iSupermarket:companyia_detail' sucursal.companyia.id %}">{{ sucursal.companyia }}</a></li>
           </ul></p>
+          <a href="{% url 'iSupermarket:sucursal_list' %}">Tornar a la llista</a>
           {% endblock %}
