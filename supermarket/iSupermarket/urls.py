@@ -3,6 +3,7 @@ from models import *
 #from filmApplication.forms import ActorForm, DirectorForm, MovieForm, ReviewForm
 from views import *
 from django.contrib import admin
+from viewsEloi import *
 #from forms import ClientForm
 
 
@@ -12,9 +13,13 @@ urlpatterns = patterns('',
 	#Url de inici
     url(r'^$', Inici.as_view()),
     url(r'^Client/$',Clients.as_view()),
-    url(r'^Marca/$',Marca.as_view()),
-    url(r'^Producte/$',Producte.as_view()),
-    url(r'^Companyia/$',Companyia.as_view()),
-    url(r'^Sucursal/$',Sucursal.as_view()),
+    url(r'^Marca/$',Marcas.as_view()),
+    url(r'^Producte/$',Productes.as_view()),
+    url(r'^Companyia/$',Companyias.as_view()),
+    url(r'^Sucursal/$',Sucursals.as_view()),
     url(r'^Client/(?P<pk>\d+)/$',ClientDetail.as_view(),name='client_detail'),
+    url(r'^Companyia/(?P<pk>\d+)/$',CompanyiaDetail.as_view(),name='companyia_detail'),
+    url(r'^Sucursal/(?P<pk>\d+)/$',SucursalDetail.as_view(),name='sucursal_detail'),
+    url(r'^Marca/(?P<pk>\d+)/$',MarcaDetail.as_view(), name='marca_detail'),
+    url(r'^Producte/(?P<pk>\d+)/$',ProducteDetail.as_view(), name = 'producte_detail'),
 )

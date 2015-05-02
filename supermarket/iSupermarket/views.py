@@ -23,31 +23,30 @@ class Clients(ListView):
 class ClientDetail(DetailView):
     model = Client
     template_name = 'client_detail.html'
-    #queryset = Client.objects.get(3)
 
     def get_context_data(self, **kwargs):
        context = super(ClientDetail, self).get_context_data(**kwargs)
        return context
 
-class Companyia(ListView):
+class Companyias(ListView):
     model = Companyia
     template_name = 'companyia.html'
     queryset = Companyia.objects.all()
     context_object_name='Companyia_list'
 
-class Sucursal(ListView):
+class Sucursals(ListView):
     model = Sucursal
     template_name = 'sucursal.html'
     queryset = Sucursal.objects.all()
     context_object_name='Sucursal_list'
 
-class Marca(ListView):
+class Marcas(ListView):
     model = Marca
     template_name = 'marca.html'
     queryset = Marca.objects.all()
     context_object_name='Marca_list'
 
-class Producte(ListView):
+class Productes(ListView):
     model = Producte
     template_name = 'producte.html'
     queryset = Producte.objects.all()

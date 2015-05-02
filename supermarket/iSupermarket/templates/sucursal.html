@@ -5,8 +5,8 @@
 	Sucursal:
 </h1>
 <ul>
-	{% for Sucursal in Sucursal_list  %}
-		<li>{{Sucursal.name}}</li>
+	{% for sucursal in Sucursal_list  %}
+		<li><a href="{% url	'iSupermarket:sucursal_detail' sucursal.id %}">{{ sucursal.name }}</li>
 	{% endfor %}
 </ul>
 {% endblock %}

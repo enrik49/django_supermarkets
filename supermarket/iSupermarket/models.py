@@ -15,6 +15,9 @@ class Companyia(models.Model):
 	def __unicode__(self):
 		return self.name
 
+	def get_absolute_url(self):
+		return reverse('iSupermarket:companyia_detail', kwargs={'pk':self.pk})
+
 
 class Sucursal(models.Model):
 	name = models.TextField(null=True)
@@ -22,10 +25,14 @@ class Sucursal(models.Model):
 	zipCode = models.TextField(blank=True, null=True)
 	StateOrProvince = models.TextField(blank=True, null=True)
 	country = models.TextField(blank=True, null=True)
-	Companyia = models.ForeignKey(Companyia, null=True, related_name='sucursal')
+	companyia = models.ForeignKey(Companyia, null=True, related_name='sucursal')
 
 	def __unicode__(self):
 		return self.name
+
+	def get_absolute_url(self):
+		return reverse('iSupermarket:sucursal_detail', kwargs={'pk':self.pk})
+
 
 
 class Client(models.Model):
@@ -45,11 +52,21 @@ class Client(models.Model):
 
 class Marca(models.Model):
 	name = models.TextField(null=True)
+
 	def __unicode__(self):
 		return self.name
+
+	def get_absolute_url(self):
+		return reverse('iSupermarket:marca_detail', kwargs={'pk':self.pk})
 
 class Producte(models.Model):
 	name = models.TextField(null=True)
 	marca = models.ForeignKey(Marca, null=True, related_name='producte')
+
 	def __unicode__(self):
-		return self.name + ' \''+ self.Marca.name +'\''
+		return self.name + ' \''+ self.marca.name +'\''
+
+	def get_absolute_url(self):
+		return reverse('iSupermarket:producte_detail', kwargs={'pk':self.pk})
+
+

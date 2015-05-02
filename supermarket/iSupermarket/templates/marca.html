@@ -5,8 +5,8 @@
 	Marca:
 </h1>
 <ul>
-	{% for Marca in Marca_list  %}
-		<li>{{Marca.name}}</li>
+	{% for marca in Marca_list  %}
+		<li><a href="{% url	'iSupermarket:marca_detail' marca.id %}">{{marca.name}}</a></li>
 	{% endfor %}
 </ul>
 {% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block	content	%}
+<h1>
+  {{ sucursal }}
+  <!--{%	if	user	==	restaurant.user	%}
+    (<a href="{%	url	'myrestaurants:restaurant_edit'	restaurant.id	%}">edit</a>)
+      {%	endif	%}-->
+</h1>
+          <h2>Detalls:</h2>
+          <p><ul>
+            <li>NOM: {{ sucursal.name }}</li>
+            <li>Localitzacio: {{ sucursal.location}}</li>
+            <li>{{ sucursal.zipCode}}</li>
+            <li>{{ sucursal.StateOrProvince }}</li>
+            <li>{{ sucursal.country }}</li>
+            <li><a href="{% url 'iSupermarket:companyia_detail' sucursal.companyia.id %}">{{ sucursal.companyia }}</a></li>
+          </ul></p>
+          {% endblock %}

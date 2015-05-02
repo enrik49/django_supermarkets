@@ -1,26 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>
-	Clients:
-</h1>
-<ul>
-	<!--<h2>Recents:</h2>
-	{% for client in clients_list %}
-		{% if client.was_registred_recently == True %}
-			<li>{{client.name}} {{client.lastName}}</li>
-		{% endif %}
-	{% endfor %}
-	<h2>Vells:</h2>-->
-	{% for client in clients_list  %}
-		{% if client.was_registred_recently == False %}
-		<!--<li>{{client.name}} {{client.lastName}}</li>-->
-		<li><a href="{% url	'iSupermarket:client_detail' client.id %}">{{client.name}} {{client.lastName}}</a></li>
-		{% endif %}
-	{% endfor %}
-</ul>
+	<h1>
+		Clients:
+	</h1>
+	<ul>
+		{% for client in clients_list  %}
+				<li><a href="{% url	'iSupermarket:client_detail' client.id %}">{{ client }}</a></li>
+		{% endfor %}
+	</ul>
 {% endblock %}
-
-<!--{% block footer %}
-    Created by {{ dish.user }} on {{ dish.date }}
-{% endblock %}-->

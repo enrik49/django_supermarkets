@@ -2,11 +2,11 @@
 
 {% block content %}
 <h1>
-	Producte:
+	producte:
 </h1>
 <ul>
-	{% for Producte in Producte_list  %}
-		<li>{{Producte.name}}</li>
+	{% for producte in Producte_list  %}
+		<li><a href="{% url	'iSupermarket:producte_detail' producte.id %}">{{producte.name}}</li>
 	{% endfor %}
 </ul>
 {% endblock %}

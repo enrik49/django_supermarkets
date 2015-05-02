@@ -5,8 +5,9 @@
 	Companyia:
 </h1>
 <ul>
-	{% for Companyia in Companyia_list  %}
-		<li>{{Companyia.name}}</li>
+	{% for companyia in Companyia_list  %}
+		<li><a href="{% url	'iSupermarket:companyia_detail' companyia.id %}">{{ companyia.name}}</li>
+	{% empty %}<li> Disculpeu, encara no hi ha cap companyia</li>
 	{% endfor %}
 </ul>
 {% endblock %}

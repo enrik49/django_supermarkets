@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block	content	%}
+<h1>
+  {{ marca }}
+  <!--{%	if	user	==	restaurant.user	%}
+    (<a href="{%	url	'myrestaurants:restaurant_edit'	restaurant.id	%}">edit</a>)
+      {%	endif	%}-->
+</h1>
+          <h2>Detalls:</h2>
+          <p>
+            NOM: {{ marca.name }}<br/>
+          </p>
+          {% endblock %}
