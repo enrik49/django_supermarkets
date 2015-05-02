@@ -32,7 +32,7 @@ class Client(models.Model):
 	name = models.CharField(max_length=20)
 	lastName = models.CharField(null=True,max_length=20)
 	phone = models.CharField(null=True,max_length=9)
-	registration_date = models.DateTimeField()
+	registration_date = models.DateTimeField(default=timezone.now())
 
 	def was_registred_recently(self):
 		return self.registration_date >= timezone.now() - datetime.timedelta(days=1)
@@ -50,6 +50,6 @@ class Marca(models.Model):
 
 class Producte(models.Model):
 	name = models.TextField(null=True)
-	Marca = models.ForeignKey(Marca, null=True, related_name='producte')
+	marca = models.ForeignKey(Marca, null=True, related_name='producte')
 	def __unicode__(self):
 		return self.name + ' \''+ self.Marca.name +'\''

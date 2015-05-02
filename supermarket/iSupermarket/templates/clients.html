@@ -15,8 +15,7 @@
 	{% for client in clients_list  %}
 		{% if client.was_registred_recently == False %}
 		<!--<li>{{client.name}} {{client.lastName}}</li>-->
-			<li><a href="{% url	'iSupermarket:client_detail' client.id %}">{{client.name}} {{client.lastName}}</a></li>
-
+		<li><a href="{% url	'iSupermarket:client_detail' client.id %}">{{client.name}} {{client.lastName}}</a></li>
 		{% endif %}
 	{% endfor %}
 </ul>

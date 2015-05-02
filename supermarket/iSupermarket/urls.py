@@ -11,7 +11,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
 	#Url de inici
     url(r'^$', Inici.as_view()),
-    url(r'^Client/$',Client.as_view()),
+    url(r'^Client/$',Clients.as_view()),
     url(r'^Marca/$',Marca.as_view()),
     url(r'^Producte/$',Producte.as_view()),
     url(r'^Companyia/$',Companyia.as_view()),

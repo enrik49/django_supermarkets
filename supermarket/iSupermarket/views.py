@@ -10,11 +10,11 @@ from models import Client, Companyia, Marca, Producte, Sucursal
 #from forms import ClientForm
 
 class Inici(ListView):
-    model = Client #Aixo ha de quedar aixi ara que ja no llistem clients.
+    model = Client #Aixo ha de quedar aixi ara que ja no llistem sol clients.
     template_name = 'index.html'
     queryset = Client.objects.all() #Comentari = al anterior.
 
-class Client(ListView):
+class Clients(ListView):
     model = Client
     template_name = 'clients.html'
     queryset = Client.objects.all()
@@ -23,10 +23,11 @@ class Client(ListView):
 class ClientDetail(DetailView):
     model = Client
     template_name = 'client_detail.html'
+    #queryset = Client.objects.get(3)
 
     def get_context_data(self, **kwargs):
-        context = super(ClientDetail, self).get_context_data(**kwargs)
-        return context
+       context = super(ClientDetail, self).get_context_data(**kwargs)
+       return context
 
 class Companyia(ListView):
     model = Companyia

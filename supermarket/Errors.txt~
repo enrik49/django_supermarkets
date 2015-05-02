@@ -8,8 +8,42 @@
 
 ERROR CLIENTDETAIL
 
+AttributeError at /app/Client/3/
+
+type object 'Client' has no attribute '_default_manager'
+
+Request Method: 	GET
+Request URL: 	http://127.0.0.1:8000/app/Client/3/
+Django Version: 	1.7.4
+Exception Type: 	AttributeError
+Exception Value: 	
+
+type object 'Client' has no attribute '_default_manager'
+
+Exception Location: 	/usr/local/lib/python2.7/dist-packages/django/views/generic/detail.py in get_queryset, line 67
+Python Executable: 	/usr/bin/python
+Python Version: 	2.7.3
+Python Path: 	
+
+['/home/eloi/SITW/django_supermarkets/supermarket',
+ '/usr/lib/python2.7',
+ '/usr/lib/python2.7/plat-linux2',
+ '/usr/lib/python2.7/lib-tk',
+ '/usr/lib/python2.7/lib-old',
+ '/usr/lib/python2.7/lib-dynload',
+ '/usr/local/lib/python2.7/dist-packages',
+ '/usr/lib/python2.7/dist-packages',
+ '/usr/lib/python2.7/dist-packages/PIL',
+ '/usr/lib/python2.7/dist-packages/gst-0.10',
+ '/usr/lib/python2.7/dist-packages/gtk-2.0',
+ '/usr/lib/pymodules/python2.7',
+ '/usr/lib/python2.7/dist-packages/wx-2.8-gtk2-unicode']
+
+Server time: 	Fri, 1 May 2015 19:35:52 +0000
+
 
 Environment:
+
 
 
 Request Method: GET
