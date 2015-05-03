@@ -69,4 +69,15 @@ class Producte(models.Model):
 	def get_absolute_url(self):
 		return reverse('iSupermarket:producte_detail', kwargs={'pk':self.pk})
 
+class ClientSucursal(models.Model):
+	sucursal = models.ManyToManyField(Sucursal)
+	client = models.ManyToManyField(Client)
+
+class MarcaSucursal(models.Model):
+	sucursal = models.ManyToManyField(Sucursal)
+	marca = models.ManyToManyField(Marca)
+
+class MarcaClient(models.Model):
+	marca = models.ManyToManyField(Marca)
+	client = models.ManyToManyField(Client)
 
