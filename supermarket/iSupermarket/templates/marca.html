@@ -3,7 +3,10 @@
 {% block content %}
 <h1>
 	Marca:
-	<a href="{% url 'iSupermarket:marca_create' %}">Afegir nou Marca</a>
+
+    {% if user.username %}
+	<h4><a href="{% url 'iSupermarket:marca_create' %}">Afegir nou Marca</a></h4>
+	{% endif %}
 </h1>
 <ul>
 	{% for marca in Marca_list  %}

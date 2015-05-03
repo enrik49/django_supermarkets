@@ -3,7 +3,9 @@
 {% block content %}
 	<h1>
 		Clients:
-		<a href="{% url 'iSupermarket:client_create' %}">Afegir nou Client</a>
+		{% if user.username %}
+		<h4><a href="{% url 'iSupermarket:client_create' %}">Afegir nou Client</a></h4>
+		{% endif %}
 	</h1>
 	<ul>
 		{% for client in clients_list  %}

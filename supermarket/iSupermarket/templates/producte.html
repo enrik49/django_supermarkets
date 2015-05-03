@@ -3,7 +3,9 @@
 {% block content %}
 <h1>
 	Producte:
-	<a href="{% url 'iSupermarket:producte_create' %}">Afegir nou Producte</a>
+	{% if user.username %}
+	<h4><a href="{% url 'iSupermarket:producte_create' %}">Afegir nou Producte</a></h4>
+	{% endif %}
 </h1>
 <ul>
 	{% for producte in Producte_list  %}

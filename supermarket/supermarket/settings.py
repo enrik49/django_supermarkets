@@ -40,7 +40,7 @@ INSTALLED_APPS = (
     'iSupermarket',
 )
 
-'''MIDDLEWARE_CLASSES = (
+MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -48,7 +48,7 @@ INSTALLED_APPS = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-)'''
+)
 
 ROOT_URLCONF = 'supermarket.urls'
 
@@ -68,7 +68,7 @@ DATABASES = {
 
 
 TEMPLATE_DIRS = (
-    (os.path.dirname(__file__),'../templates'),
+    os.path.join(os.path.dirname(__file__), '../templates'),
 )
 
 # Internationalization

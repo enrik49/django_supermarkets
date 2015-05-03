@@ -3,7 +3,9 @@
 {% block content %}
 <h1>
 	Companyia:
-	<h2><a href="{% url 'iSupermarket:companyia_create' %}">Afegir nova Companyia</a></h2>
+	{% if user.username %}
+	<h4><a href="{% url 'iSupermarket:companyia_create' %}">Afegir nova Companyia</a></h4>
+	{% endif %}
 </h1>
 <ul>
 	{% for companyia in Companyia_list  %}

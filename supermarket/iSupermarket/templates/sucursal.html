@@ -3,7 +3,9 @@
 {% block content %}
 <h1>
 	Sucursal:
-	<a href="{% url 'iSupermarket:sucursal_create' %}">Afegir nova Sucursal</a>
+	{% if user.username %}
+	<h4><a href="{% url 'iSupermarket:sucursal_create' %}">Afegir nova Sucursal</a></h4>
+	{% endif %}
 </h1>
 <ul>
 	{% for sucursal in Sucursal_list  %}
