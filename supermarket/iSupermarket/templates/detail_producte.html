@@ -9,7 +9,7 @@
           <h2>Detalls:</h2>
           <p>
             NOM: {{ producte.name }}<br/>
-            <a href="{% url 'iSupermarket:marca_detail' producte.marca.id %}">{{ producte.marca }}</a>
+            Marca: <a href="{% url 'iSupermarket:marca_detail' producte.marca.id %}">{{ producte.marca }}</a>
           </p>
           <a href="{% url 'iSupermarket:producte_list' %}">Tornar a la llista</a>
           {% endblock %}

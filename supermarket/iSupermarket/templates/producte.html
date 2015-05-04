@@ -10,6 +10,7 @@
 <ul>
 	{% for producte in Producte_list  %}
 		<li><a href="{% url	'iSupermarket:producte_detail' producte.id %}">{{producte.name}}</li>
+		{% empty %}<li> Disculpeu, encara no hi ha cap producte</li>
 	{% endfor %}
 </ul>
 {% endblock %}

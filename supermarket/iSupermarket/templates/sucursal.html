@@ -10,6 +10,7 @@
 <ul>
 	{% for sucursal in Sucursal_list  %}
 		<li><a href="{% url	'iSupermarket:sucursal_detail' sucursal.id %}">{{ sucursal.name }}</li>
+		{% empty %}<li> Disculpeu, encara no hi ha cap sucursal</li>
 	{% endfor %}
 </ul>
 {% endblock %}

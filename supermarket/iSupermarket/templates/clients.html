@@ -10,6 +10,7 @@
 	<ul>
 		{% for client in clients_list  %}
 				<li><a href="{% url	'iSupermarket:client_detail' client.id %}">{{ client }}</a></li>
+		{% empty %}<li> Disculpeu, encara no hi ha cap client/li>
 		{% endfor %}
 	</ul>
 {% endblock %}

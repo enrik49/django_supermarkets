@@ -11,6 +11,7 @@
 <ul>
 	{% for marca in Marca_list  %}
 		<li><a href="{% url	'iSupermarket:marca_detail' marca.id %}">{{marca.name}}</a></li>
+		{% empty %}<li> Disculpeu, encara no hi ha cap marca</li>
 	{% endfor %}
 </ul>
 {% endblock %}

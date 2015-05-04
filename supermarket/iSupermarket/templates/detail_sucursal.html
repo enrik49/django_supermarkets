@@ -8,12 +8,12 @@
 </h1>
           <h2>Detalls:</h2>
           <p><ul>
-            <li>NOM: {{ sucursal.name }}</li>
+            <li>Nom: {{ sucursal.name }}</li>
             <li>Localitzacio: {{ sucursal.location}}</li>
-            <li>{{ sucursal.zipCode}}</li>
-            <li>{{ sucursal.StateOrProvince }}</li>
-            <li>{{ sucursal.country }}</li>
-            <li><a href="{% url 'iSupermarket:companyia_detail' sucursal.companyia.id %}"> {{ sucursal.companyia}}</a></li>
+            <li>ZipCode: {{ sucursal.zipCode}}</li>
+            <li>Estat o Provincia: {{ sucursal.StateOrProvince }}</li>
+            <li>Pais: {{ sucursal.country }}</li>
+            <li>Sucursal: <a href="{% url 'iSupermarket:companyia_detail' sucursal.companyia.id %}"> {{ sucursal.companyia}}</a></li>
           </ul></p>
           <a href="{% url 'iSupermarket:sucursal_list' %}">Tornar a la llista</a>
           {% endblock %}
