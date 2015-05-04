@@ -9,7 +9,7 @@
 </h1>
 <ul>
 	{% for companyia in Companyia_list  %}
-		<li><a href="{% url	'iSupermarket:companyia_detail' companyia.id %}">{{ companyia.name}}</li>
+		<li><a href="{% url	'iSupermarket:companyia_detail' companyia.id %}">{{ companyia.name }}</li>
 	{% empty %}<li> Disculpeu, encara no hi ha cap companyia</li>
 	{% endfor %}
 </ul>

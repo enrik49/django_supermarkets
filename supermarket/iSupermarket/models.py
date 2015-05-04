@@ -44,8 +44,11 @@ class Client(models.Model):
 	def was_registred_recently(self):
 		return self.registration_date >= timezone.now() - datetime.timedelta(days=1)
 
+	was_registred_recently.admin_order_field = 'pub_date'
+	was_registred_recently.boolean = True
+	was_registred_recently.short_description = 'Published recently?'
 	def __unicode__(self):
-		return self.name + ' ' + self.lastName
+		return unicode(self.name) + u' ' + unicode(self.lastName)
 
 	def get_absolute_url(self):
 		return reverse('iSupermarket:client_detail', kwargs={'pk':self.pk})
