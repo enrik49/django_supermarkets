@@ -9,15 +9,19 @@ class ClientForm(ModelForm):
 class CompanyiaForm(ModelForm):
     class Meta:
         model = Companyia
+        exclude =()
 
 class MarcaForm(ModelForm):
     class Meta:
         model = Marca
+        exclude =()
 
 class ProducteForm(ModelForm):
     class Meta:
         model = Producte
+        exclude =()
 
 class SucursalForm(ModelForm):
     class Meta:
         model = Sucursal
+        exclude =()

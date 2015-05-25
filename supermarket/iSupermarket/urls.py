@@ -6,6 +6,11 @@ from django.contrib import admin
 from viewsEloi import *
 #from forms import ClientForm
 
+from django.conf.urls import patterns, url, include
+from django.contrib.auth.decorators import login_required
+from django.views.generic import DetailView
+from rest_framework.urlpatterns import format_suffix_patterns
+
 
 admin.autodiscover()
 
@@ -37,4 +42,16 @@ urlpatterns = patterns('',
     url(r'^Producte/(?P<pk>\d+)\.(?P<extension>(json|xml))$', ProducteDetail.as_view(), name='producte_detail_conneg'),
     url(r'^Sucursal/(?P<pk>\d+)\.(?P<extension>(json|xml))$', SucursalDetail.as_view(), name='sucursal_detail_conneg'),
     url(r'^Companyia/(?P<pk>\d+)\.(?P<extension>(json|xml))$', CompanyiaDetail.as_view(), name='companyia_detail_conneg'),
+    
 )
+
+#RESTful API
+urlpatterns += patterns('',
+    url(r'^api/auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api/Clients/$', APIClientList.as_view(), name='client-list'),
+    url(r'^api/Clients/(?P<pk>\d+)/$', APIClientDetail.as_view(), name='client-detail'),
+    
+)
+
+# Format suffixes
+urlpatterns = format_suffix_patterns(urlpatterns, allowed=['api','json', 'xml'])

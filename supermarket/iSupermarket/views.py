@@ -7,10 +7,29 @@ from django.views.generic import DetailView, ListView
 from django.views.generic.edit import CreateView
 from django.views.generic.base import TemplateResponseMixin
 from django.core import serializers
+from rest_framework import routers, serializers, viewsets
 
 from models import Client, Companyia, Marca, Producte, Sucursal
-#from forms import ClientForm
-from views_enric import *
+from forms import *
+
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
+from django.core.exceptions import PermissionDenied
+from rest_framework import generics, permissions
+from serializers import *
+
+
+class LoginRequiredMixin(object):
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(LoginRequiredMixin, self).dispatch(*args, **kwargs)
+
+class CheckIsOwnerMixin(object):
+    def get_object(self, *args, **kwargs):
+        obj = super(CheckIsOwnerMixin, self).get_object(*args, **kwargs)
+        if not obj.user == self.request.user:
+            raise PermissionDenied
+        return obj
 
 
 class ConnegResponseMixin(TemplateResponseMixin):
@@ -41,7 +60,7 @@ class Inici(ListView):
     template_name = 'index.html'
     queryset = Client.objects.all() #Comentari = al anterior.
 
-class Clients(ListView,ConnegResponseMixin):
+class Clients(LoginRequiredMixin,ListView,ConnegResponseMixin):
     model = Client
     template_name = 'clients.html'
     queryset = Client.objects.all()
@@ -157,3 +176,27 @@ class SucursalCreate(CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(SucursalCreate, self).form_valid(form)
+
+
+class IsOwnerOrReadOnly(permissions.BasePermission):
+
+    def has_object_permission(self, request, view, obj):
+        # Read permissions are allowed to any request,
+        # so we'll always allow GET, HEAD or OPTIONS requests.
+        if request.method in permissions.SAFE_METHODS:
+            return True
+
+        # Instance must have an attribute named `owner`.
+        return obj.user == request.user
+
+class APIClientList(generics.ListCreateAPIView):
+    permission_classes = (IsOwnerOrReadOnly,)
+    model = Client
+    queryset = Client.objects.all()
+    serializer_class = ClientSerializer
+
+class APIClientDetail(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = (IsOwnerOrReadOnly,)
+    model = Client
+    queryset = Client.objects.all()
+    serializer_class = ClientSerializer
