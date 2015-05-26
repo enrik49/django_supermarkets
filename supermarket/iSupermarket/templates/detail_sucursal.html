@@ -2,10 +2,15 @@
 {% block	content	%}
 <h1>
   {{ sucursal }}
-  <!--{%	if	user	==	restaurant.user	%}
-    (<a href="{%	url	'myrestaurants:restaurant_edit'	restaurant.id	%}">edit</a>)
-      {%	endif	%}-->
 </h1>
+ {% if user.is_staff %}
+  <a href="{% url 'iSupermarket:sucursal_update' sucursal.id %}">edit</a>
+  <a href="{% url 'iSupermarket:sucursal_delete' sucursal.id %}">delete</a>
+{% elif user == sucursal.user %}
+    <a href="{% url 'iSupermarket:sucursal_update' sucursal.id %}">edit</a>
+    <a href="{% url 'iSupermarket:sucursal_delete' sucursal.id %}">delete</a>
+{% endif %}
+
           <h2>Detalls:</h2>
           <p><ul>
             <li>Nom: {{ sucursal.name }}</li>
@@ -13,7 +18,7 @@
             <li>ZipCode: {{ sucursal.zipCode}}</li>
             <li>Estat o Provincia: {{ sucursal.StateOrProvince }}</li>
             <li>Pais: {{ sucursal.country }}</li>
-            <li>Sucursal: <a href="{% url 'iSupermarket:companyia_detail' sucursal.companyia.id %}"> {{ sucursal.companyia}}</a></li>
+            <li>Companyia: <a href="{% url 'iSupermarket:companyia_detail' sucursal.companyia.id %}"> {{ sucursal.companyia}}</a></li>
           </ul></p>
           <a href="{% url 'iSupermarket:sucursal_list' %}">Tornar a la llista</a>
           {% endblock %}

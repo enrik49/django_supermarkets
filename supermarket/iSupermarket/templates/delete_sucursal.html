@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block	content	%}
+<h1>
+	Eliminar Sucursal
+</h1>
+
+<form action="" method="post">{% csrf_token %}
+    <p>Estas segur que vols eliminar la sucursal: "{{ sucursal }}"?</p>
+    <input type="submit" value="Confirmar" />
+</form>
+
+{% endblock %}

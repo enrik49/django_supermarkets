@@ -20,6 +20,8 @@ from django.core.exceptions import PermissionDenied
 from rest_framework import generics, permissions
 from serializers import *
 
+from django.shortcuts import render, render_to_response, RequestContext
+
 
 class LoginRequiredMixin(object):
     @method_decorator(login_required)
@@ -179,6 +181,16 @@ class SucursalCreate(CreateView):
         form.instance.user = self.request.user
         return super(SucursalCreate, self).form_valid(form)
 
+def SucursalCreate2(request):
+    if request.method == 'POST':
+        formulario = SucursalForm2(request.user, request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            return HttpResponseRedirect('/app/Sucursal')
+    else:
+        formulario = SucursalForm2(request.user)
+    return render_to_response('form_sucursal.html',{'form':formulario},context_instance=RequestContext(request))
+
 class UserCreate(CreateView):
     model = User
     template_name = 'form_user.html'
@@ -207,7 +219,28 @@ class CompanyiaDelete(DeleteView):
 	model = Companyia
 	success_url = "/app/Companyia"
 	template_name = 'delete_companyia.html'
-	
+
+class SucursalUpdate(UpdateView):
+    model=Sucursal
+    template_name = 'update_sucursal.html'
+    form_class = SucursalForm
+
+def SucursalUpdate2(request,pk):
+    sucursal = Sucursal.objects.get(id=pk)
+    if request.method == 'POST':
+        formulario = SucursalForm2(sucursal.user, request.POST, instance=sucursal)
+        if formulario.is_valid():
+            formulario.save()
+            return HttpResponseRedirect('/app/Sucursal')
+    else:
+        formulario = SucursalForm2(sucursal.user, instance=sucursal)
+    return render_to_response('update_sucursal.html',{'form':formulario},context_instance=RequestContext(request))
+
+
+class SucursalDelete(DeleteView):
+    model = Sucursal
+    success_url = "/app/Sucursal"
+    template_name = 'delete_sucursal.html'
 
 
 

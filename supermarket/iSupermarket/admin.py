@@ -15,7 +15,7 @@ class AdminCompanyia(admin.ModelAdmin):
     list_display = ['name','idNumber']
     fieldsets = [
     (None,{'fields':['name']}),
-    (None,{'fields':['idNumber']}),
+    (None,{'fields':['idNumber','user']}),
     ]
 admin.site.register(Companyia,AdminCompanyia)
 
@@ -23,7 +23,7 @@ class AdminSucursal(admin.ModelAdmin):
     list_display=['name','StateOrProvince','country','companyia']
     fieldsets = [
     ('Sucursal information',{'fields':['name','location','zipCode','StateOrProvince','country']}),
-    (None,{'fields':['companyia']}),
+    (None,{'fields':['companyia','user']}),
     ]
 admin.site.register(Sucursal,AdminSucursal)    
         

@@ -1,5 +1,6 @@
-from django.forms import ModelForm
+from django.forms import ModelForm, ModelChoiceField
 from models import Client, Companyia, Marca, Producte, Sucursal
+from django.contrib.auth.models import User
 
 class ClientForm(ModelForm):
     class Meta:
@@ -25,3 +26,23 @@ class SucursalForm(ModelForm):
     class Meta:
         model = Sucursal
         exclude =('user',)
+
+
+class SucursalForm2(ModelForm):
+    user = User
+    class Meta:
+        model = Sucursal
+        exclude =('user',)
+
+    def __init__(self, user, *args, **kwargs):
+        super(SucursalForm2, self).__init__(*args,**kwargs)
+        self.user = user
+        print user
+        self.fields['companyia'] = ModelChoiceField(Companyia.objects.filter(user=user),to_field_name="id")
+
+    def save(self):
+        sucursal = super(SucursalForm2, self).save(commit=False)
+        sucursal.user = self.user
+        sucursal.save()
+        return sucursal
+
