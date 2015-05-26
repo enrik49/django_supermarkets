@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block	content	%}
+<h1>
+  {{ companyia }}
+</h1>
+          <h2>Detalls:</h2>
+          <p>
+            NOM: {{ companyia.name }}<br/>
+            ID: {{ companyia.idNumber }}<br/>
+          </p>
+          <a href="{% url 'iSupermarket:companyia_list' %}">Tornar a la llista</a>
+{% endblock %}

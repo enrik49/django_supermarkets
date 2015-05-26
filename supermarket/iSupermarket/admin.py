@@ -4,8 +4,8 @@ from django.contrib import admin
 class AdminClient(admin.ModelAdmin):
     list_display = ['name','lastName','registration_date','was_registred_recently']
     fieldsets = [
-    ('User information',{'fields':['name','lastName','phone']}),
-    (None,{'fields':['registration_date'],'classes': ['collapse']}),
+    ('User information',{'fields':['name','lastName','phone','user']}),
+    (None,{'fields':['registration_date',],'classes': ['collapse']}),
     ]
 
 

@@ -3,6 +3,13 @@
 <h1>
   {{ companyia }}
 </h1>
+{% if user.is_staff %}
+	<a href="{% url 'iSupermarket:companyia_update' companyia.id %}">edit</a>
+	<a href="{% url 'iSupermarket:companyia_delete' companyia.id %}">delete</a>
+{% elif user == companyia.user %}
+    <a href="{% url 'iSupermarket:companyia_update' companyia.id %}">edit</a>
+	<a href="{% url 'iSupermarket:companyia_delete' companyia.id %}">delete</a>
+{% endif %}
           <h2>Detalls:</h2>
           <p>
             NOM: {{ companyia.name }}<br/>

@@ -14,14 +14,14 @@ class CompanyiaForm(ModelForm):
 class MarcaForm(ModelForm):
     class Meta:
         model = Marca
-        exclude =('user',)
+        exclude =()
 
 class ProducteForm(ModelForm):
     class Meta:
         model = Producte
-        exclude =('user',)
+        exclude =()
 
 class SucursalForm(ModelForm):
     class Meta:
         model = Sucursal
-        exclude =('user',)
+        exclude =()

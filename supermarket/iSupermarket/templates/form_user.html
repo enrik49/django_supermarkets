@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block	content	%}
+<h1>
+	Registre nou usuari
+</h1>
+	<form method="post" enctype="multipart/form-data" action="">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="Enviar"/>
+    </form>
+    </br>
+    <a href="/app">Tornar a la llista</a>
+{% endblock %}
