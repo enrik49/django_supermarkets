@@ -2,10 +2,15 @@
 {% block	content	%}
 <h1>
   {{ marca }}
-  <!--{%	if	user	==	restaurant.user	%}
-    (<a href="{%	url	'myrestaurants:restaurant_edit'	restaurant.id	%}">edit</a>)
-      {%	endif	%}-->
 </h1>
+ {% if user.is_staff %}
+  <a href="{% url 'iSupermarket:marca_update' marca.id %}">edit</a>
+  <a href="{% url 'iSupermarket:marca_delete' marca.id %}">delete</a>
+{% elif user == marca.user %}
+    <a href="{% url 'iSupermarket:marca_update' marca.id %}">edit</a>
+    <a href="{% url 'iSupermarket:marca_delete' marca.id %}">delete</a>
+{% endif %}
+
           <h2>Detalls:</h2>
           <p>
             NOM: {{ marca.name }}<br/>

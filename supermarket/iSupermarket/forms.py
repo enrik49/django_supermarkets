@@ -22,6 +22,23 @@ class ProducteForm(ModelForm):
         model = Producte
         exclude =('user',)
 
+class ProducteForm2(ModelForm):
+    user = User
+    class Meta:
+        model = Producte
+        exclude =('user',)
+
+    def __init__(self, user, *args, **kwargs):
+        super(ProducteForm2, self).__init__(*args,**kwargs)
+        self.user = user
+        self.fields['marca'] = ModelChoiceField(Marca.objects.filter(user=user),to_field_name="id")
+
+    def save(self):
+        producte = super(ProducteForm2, self).save(commit=False)
+        producte.user = self.user
+        producte.save()
+        return producte
+
 class SucursalForm(ModelForm):
     class Meta:
         model = Sucursal
@@ -45,4 +62,7 @@ class SucursalForm2(ModelForm):
         sucursal.user = self.user
         sucursal.save()
         return sucursal
+
+
+
 

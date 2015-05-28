@@ -2,10 +2,14 @@
 {% block	content	%}
 <h1>
   {{ producte }}
-  <!--{%	if	user	==	restaurant.user	%}
-    (<a href="{%	url	'myrestaurants:restaurant_edit'	restaurant.id	%}">edit</a>)
-      {%	endif	%}-->
-</h1>
+ </h1>
+  {% if user.is_staff %}
+  <a href="{% url 'iSupermarket:producte_update' producte.id %}">edit</a>
+  <a href="{% url 'iSupermarket:producte_delete' producte.id %}">delete</a>
+{% elif user == producte.user %}
+    <a href="{% url 'iSupermarket:producte_update' producte.id %}">edit</a>
+    <a href="{% url 'iSupermarket:producte_delete' producte.id %}">delete</a>
+{% endif %}
           <h2>Detalls:</h2>
           <p>
             NOM: {{ producte.name }}<br/>

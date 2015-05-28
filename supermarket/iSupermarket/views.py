@@ -172,6 +172,16 @@ class ProducteCreate(CreateView):
         form.instance.user = self.request.user
         return super(ProducteCreate, self).form_valid(form)
 
+def ProducteCreate2(request):
+    if request.method == 'POST':
+        formulario = ProducteForm2(request.user, request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            return HttpResponseRedirect('/app/Producte')
+    else:
+        formulario = ProducteForm2(request.user)
+    return render_to_response('form_producte.html',{'form':formulario},context_instance=RequestContext(request))
+
 class SucursalCreate(CreateView):
     model = Sucursal
     template_name = 'form_sucursal.html'
@@ -242,6 +252,38 @@ class SucursalDelete(DeleteView):
     success_url = "/app/Sucursal"
     template_name = 'delete_sucursal.html'
 
+
+class MarcaUpdate(UpdateView):
+    model=Marca
+    template_name = 'update_marca.html'
+    form_class = MarcaForm
+
+class MarcaDelete(DeleteView):
+    model = Marca
+    success_url = "/app/Marca"
+    template_name = 'delete_marca.html'
+
+class ProducteUpdate(UpdateView):
+    model=Producte
+    template_name = 'update_producte.html'
+    form_class = ProducteForm
+
+
+def ProducteUpdate2(request,pk):
+    producte = Producte.objects.get(id=pk)
+    if request.method == 'POST':
+        formulario = ProducteForm2(producte.user, request.POST, instance=producte)
+        if formulario.is_valid():
+            formulario.save()
+            return HttpResponseRedirect('/app/Producte')
+    else:
+        formulario = ProducteForm2(producte.user, instance=producte)
+    return render_to_response('update_producte.html',{'form':formulario},context_instance=RequestContext(request))
+
+class ProducteDelete(DeleteView):
+    model = Producte
+    success_url = "/app/Producte"
+    template_name = 'delete_producte.html'
 
 
 
