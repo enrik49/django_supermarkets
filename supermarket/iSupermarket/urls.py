@@ -15,7 +15,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 admin.autodiscover()
 
 urlpatterns = patterns('',
-	#Url de inici
+    #Url de inici
     url(r'^$', Inici.as_view(),),
     url(r'^Client/$',Clients.as_view(),name="client_list"),
     url(r'^Marca/$',Marcas.as_view(),name="marca_list"),
@@ -24,10 +24,10 @@ urlpatterns = patterns('',
     url(r'^Sucursal/$',Sucursals.as_view(),name="sucursal_list"),
     url(r'^Client/(?P<pk>\d+)/$',ClientDetail.as_view(),name='client_detail'),
     url(r'^Client/(?P<pk>\d+)/edit/$',ClientUpdate.as_view(), name='client_update'),
-	url(r'^Client/(?P<pk>\d+)/delete/$',ClientDelete.as_view(), name='client_delete'),
+    url(r'^Client/(?P<pk>\d+)/delete/$',ClientDelete.as_view(), name='client_delete'),
     url(r'^Companyia/(?P<pk>\d+)/$',CompanyiaDetail.as_view(),name='companyia_detail'),
-	url(r'^Companyia/(?P<pk>\d+)/edit/$',CompanyiaUpdate.as_view(), name='companyia_update'),
-	url(r'^Companyia/(?P<pk>\d+)/delete/$',CompanyiaDelete.as_view(), name='companyia_delete'),
+    url(r'^Companyia/(?P<pk>\d+)/edit/$',CompanyiaUpdate.as_view(), name='companyia_update'),
+    url(r'^Companyia/(?P<pk>\d+)/delete/$',CompanyiaDelete.as_view(), name='companyia_delete'),
     url(r'^Sucursal/(?P<pk>\d+)/$',SucursalDetail.as_view(),name='sucursal_detail'),
     url(r'^Sucursal/(?P<pk>\d+)/edit/$','iSupermarket.views.SucursalUpdate2', name='sucursal_update'),
     url(r'^Sucursal/(?P<pk>\d+)/delete/$',SucursalDelete.as_view(), name='sucursal_delete'),
@@ -61,6 +61,14 @@ urlpatterns += patterns('',
     url(r'^api/auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api/Clients/$', APIClientList.as_view(), name='client-list'),
     url(r'^api/Clients/(?P<pk>\d+)/$', APIClientDetail.as_view(), name='client-detail'),
+    url(r'^api/Sucursals/$', APISucursalList.as_view(), name='sucursal-list'),
+    url(r'^api/Sucursals/(?P<pk>\d+)/$', APISucursalDetail.as_view(), name='sucursal-detail'),
+    url(r'^api/Marca/$', APIMarcaList.as_view(), name='marca-list'),
+    url(r'^api/Marca/(?P<pk>\d+)/$', APIMarcaDetail.as_view(), name='marca-detail'),
+    url(r'^api/Producte/$', APIProducteList.as_view(), name='producte-list'),
+    url(r'^api/Producte/(?P<pk>\d+)/$', APIProducteDetail.as_view(), name='producte-detail'),
+    url(r'^api/Companyia/$', APICompanyiaList.as_view(), name='companyia-list'),
+    url(r'^api/Companyia/(?P<pk>\d+)/$', APICompanyiaDetail.as_view(), name='companyia-detail'),
     
 )
 

@@ -211,24 +211,24 @@ class UserCreate(CreateView):
         return super(UserCreate,self).form_valid(form)
 
 class ClientUpdate(UpdateView):
-	model=Client
-	template_name = 'update_client.html'
-	form_class = ClientForm
+    model=Client
+    template_name = 'update_client.html'
+    form_class = ClientForm
 
 class ClientDelete(DeleteView):
-	model = Client
-	success_url = "/app/Client"
-	template_name = 'delete_client.html'
+    model = Client
+    success_url = "/app/Client"
+    template_name = 'delete_client.html'
 
 class CompanyiaUpdate(UpdateView):
-	model=Companyia
-	template_name = 'update_companyia.html'
-	form_class = CompanyiaForm
+    model=Companyia
+    template_name = 'update_companyia.html'
+    form_class = CompanyiaForm
 
 class CompanyiaDelete(DeleteView):
-	model = Companyia
-	success_url = "/app/Companyia"
-	template_name = 'delete_companyia.html'
+    model = Companyia
+    success_url = "/app/Companyia"
+    template_name = 'delete_companyia.html'
 
 class SucursalUpdate(UpdateView):
     model=Sucursal
@@ -285,30 +285,52 @@ class ProducteDelete(DeleteView):
     success_url = "/app/Producte"
     template_name = 'delete_producte.html'
 
-
-
-
-
-
-class IsOwnerOrReadOnly(permissions.BasePermission):
-
-    def has_object_permission(self, request, view, obj):
-        # Read permissions are allowed to any request,
-        # so we'll always allow GET, HEAD or OPTIONS requests.
-        if request.method in permissions.SAFE_METHODS:
-            return True
-
-        # Instance must have an attribute named `owner`.
-        return obj.user == request.user
-
 class APIClientList(generics.ListCreateAPIView):
-    permission_classes = (IsOwnerOrReadOnly,)
     model = Client
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
 
 class APIClientDetail(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = (IsOwnerOrReadOnly,)
     model = Client
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
+
+class APIProducteList(generics.ListCreateAPIView):
+    model = Producte
+    queryset = Producte.objects.all()
+    serializer_class = ProducteSerializer
+
+class APIProducteDetail(generics.RetrieveUpdateDestroyAPIView):
+    model = Producte
+    queryset = Producte.objects.all()
+    serializer_class = ProducteSerializer
+
+class APIMarcaList(generics.ListCreateAPIView):
+    model = Marca
+    queryset = Marca.objects.all()
+    serializer_class = MarcaSerializer
+
+class APIMarcaDetail(generics.RetrieveUpdateDestroyAPIView):
+    model = Marca
+    queryset = Marca.objects.all()
+    serializer_class = MarcaSerializer
+
+class APICompanyiaList(generics.ListCreateAPIView):
+    model = Companyia
+    queryset = Companyia.objects.all()
+    serializer_class = CompanyiaSerializer
+
+class APICompanyiaDetail(generics.RetrieveUpdateDestroyAPIView):
+    model = Companyia
+    queryset = Companyia.objects.all()
+    serializer_class = CompanyiaSerializer
+
+class APISucursalList(generics.ListCreateAPIView):
+    model = Sucursal
+    queryset = Sucursal.objects.all()
+    serializer_class = SucursalSerializer
+
+class APISucursalDetail(generics.RetrieveUpdateDestroyAPIView):
+    model = Sucursal
+    queryset = Sucursal.objects.all()
+    serializer_class = SucursalSerializer
