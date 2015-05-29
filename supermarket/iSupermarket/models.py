@@ -43,6 +43,8 @@ class Client(models.Model):
 	phone = models.CharField(null=True,max_length=9)
 	registration_date = models.DateTimeField(default=timezone.now())
 	user = models.ForeignKey(User, default=1)
+	country = models.CharField(null=True,max_length=25)
+	city = models.CharField(null=True,max_length=25)
 
 	def was_registred_recently(self):
 		return self.registration_date >= timezone.now() - datetime.timedelta(days=1)

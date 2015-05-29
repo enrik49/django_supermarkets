@@ -11,7 +11,7 @@ class ClientSerializer(HyperlinkedModelSerializer):
 	user = CharField(read_only=True)
 	class Meta:
 		model = Client
-		fields = ('url', 'name','lastName','phone','registration_date','user')
+		fields = ('url', 'name','lastName','phone','registration_date','country','city','user')
 
 class ProducteSerializer(HyperlinkedModelSerializer):
 	url = HyperlinkedIdentityField(view_name='iSupermarket:producte-detail')
