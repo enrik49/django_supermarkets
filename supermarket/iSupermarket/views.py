@@ -129,8 +129,6 @@ class SucursalDetail(DetailView,ConnegResponseMixin):
 
     def get_context_data(self, **kwargs):
        context = super(SucursalDetail, self).get_context_data(**kwargs)
-       print >> sys.stderr, "string or object goes here"
-       context['RATING_CHOICES'] = SucursalReview.RATING_CHOICES
        return context
 
 class MarcaDetail(DetailView,ConnegResponseMixin):

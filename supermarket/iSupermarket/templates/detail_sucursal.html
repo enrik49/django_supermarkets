@@ -51,14 +51,15 @@
 {% endif %}
 
 <h3>Add Review</h3>
+{{ RATING_CHOICES }}
 <form action="{% url 'iSupermarket:review_create' sucursal.id %}" method="post">
     {% csrf_token %}
     Message: <textarea name="comment" id="comment" rows="4"></textarea>
     <p>Rating:</p>
     <p>
-    {% for rate in RATING_CHOICES %}
-        <input type="radio" name="rating" id="rating{{ forloop.counter }}" value="{{ rate.1 }}" />
-        <label for="choice{{ forloop.counter }}">{{ rate.1 }} star{{ rate.0|pluralize }}</label><br />
+    {% for rate in "12345"|make_list %}
+        <input type="radio" name="rating" id="rating{{ forloop.counter }}" value="{{ rate }}" />
+        <label for="choice{{ forloop.counter }}">{{ rate }} star{{ rate|pluralize }}</label><br />
     {% endfor %}
     </p>
     <input type="submit" value="Review" />
