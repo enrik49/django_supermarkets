@@ -1,4 +1,4 @@
-from .models import Client, Companyia, Marca, Producte, Sucursal
+from .models import *
 from django.contrib import admin
 
 class AdminClient(admin.ModelAdmin):
@@ -38,6 +38,7 @@ class AdminProducte(admin.ModelAdmin):
     ]
 admin.site.register(Marca)
 admin.site.register(Producte,AdminProducte)
+admin.site.register(SucursalReview)
 
 """admin.site.register(models.Companyia)
 admin.site.register(models.Sucursal)

@@ -20,6 +20,7 @@ from django.core.exceptions import PermissionDenied
 from rest_framework import generics, permissions
 from serializers import *
 
+
 from django.shortcuts import render, render_to_response, RequestContext
 
 
@@ -27,6 +28,17 @@ class LoginRequiredMixin(object):
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(LoginRequiredMixin, self).dispatch(*args, **kwargs)
+
+@login_required()
+def review(request, pk):
+    sucursal = get_object_or_404(Sucursal, pk=pk)
+    new_review = SucursalReview(
+        rating=request.POST['rating'],
+        comment=request.POST['comment'],
+        user=request.user,
+        sucursal=sucursal)
+    new_review.save()
+    return HttpResponseRedirect(urlresolvers.reverse('iSupermarket:sucursal_detail', args=(sucursal.id,)))
 
 class CheckIsOwnerMixin(object):
     def get_object(self, *args, **kwargs):
@@ -117,6 +129,8 @@ class SucursalDetail(DetailView,ConnegResponseMixin):
 
     def get_context_data(self, **kwargs):
        context = super(SucursalDetail, self).get_context_data(**kwargs)
+       print >> sys.stderr, "string or object goes here"
+       context['RATING_CHOICES'] = SucursalReview.RATING_CHOICES
        return context
 
 class MarcaDetail(DetailView,ConnegResponseMixin):
@@ -334,3 +348,13 @@ class APISucursalDetail(generics.RetrieveUpdateDestroyAPIView):
     model = Sucursal
     queryset = Sucursal.objects.all()
     serializer_class = SucursalSerializer
+
+class APISucursalReviewList(generics.ListCreateAPIView):
+    model = SucursalReview
+    queryset = SucursalReview.objects.all()
+    serializer_class = SucursalReviewSerializer
+
+class APISucursalReviewDetail(generics.RetrieveUpdateDestroyAPIView):
+    model = SucursalReview
+    queryset = SucursalReview.objects.all()
+    serializer_class = SucursalReviewSerializer

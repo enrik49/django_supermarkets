@@ -52,8 +52,8 @@ urlpatterns = patterns('',
     url(r'^Producte/(?P<pk>\d+)\.(?P<extension>(json|xml))$', ProducteDetail.as_view(), name='producte_detail_conneg'),
     url(r'^Sucursal/(?P<pk>\d+)\.(?P<extension>(json|xml))$', SucursalDetail.as_view(), name='sucursal_detail_conneg'),
     url(r'^Companyia/(?P<pk>\d+)\.(?P<extension>(json|xml))$', CompanyiaDetail.as_view(), name='companyia_detail_conneg'),
-    url(r'^Register/$',UserCreate.as_view(),name='user_create')
-    
+    url(r'^Register/$',UserCreate.as_view(),name='user_create'),
+    url(r'^Sucursal/(?P<pk>\d+)/reviews/create/$', 'iSupermarket.views.review', name='review_create'),
 )
 
 #RESTful API
@@ -69,6 +69,8 @@ urlpatterns += patterns('',
     url(r'^api/Producte/(?P<pk>\d+)/$', APIProducteDetail.as_view(), name='producte-detail'),
     url(r'^api/Companyia/$', APICompanyiaList.as_view(), name='companyia-list'),
     url(r'^api/Companyia/(?P<pk>\d+)/$', APICompanyiaDetail.as_view(), name='companyia-detail'),
+    url(r'^api/sucursalreviews/$', APISucursalReviewList.as_view(), name='sucursalreview-list'),
+    url(r'^api/sucursalreviews/(?P<pk>\d+)/$', APISucursalReviewDetail.as_view(), name='sucursalreview-detail'),
     
 )
 

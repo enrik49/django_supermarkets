@@ -6,7 +6,6 @@ import datetime
 from django.utils import timezone
 #from datetime import date
 
-
 class Companyia(models.Model):
 	name = models.TextField(null=True)
 	idNumber = models.TextField(null=True)
@@ -90,4 +89,17 @@ class MarcaSucursal(models.Model):
 class MarcaClient(models.Model):
 	marca = models.ManyToManyField(Marca)
 	client = models.ManyToManyField(Client)
+
+class Review(models.Model):
+    RATING_CHOICES = ((1,'1'),(2,'2'),(3,'3'),(4,'4'),(5,'5'))
+    rating = models.PositiveSmallIntegerField('ratings (stars)', blank=False, default=3, choices=RATING_CHOICES)
+    comment = models.TextField(blank=True, null=True)
+    user = models.ForeignKey(User, default=1)
+    date_re = timezone.now()
+
+    class Meta:
+        abstract = True
+
+class SucursalReview(Review):
+    sucursal = models.ForeignKey(Sucursal)
 

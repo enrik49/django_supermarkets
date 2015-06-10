@@ -24,10 +24,11 @@ class ProducteSerializer(HyperlinkedModelSerializer):
 class SucursalSerializer(HyperlinkedModelSerializer):
 	url = HyperlinkedIdentityField(view_name='iSupermarket:sucursal-detail')
 	companyia = HyperlinkedRelatedField(queryset=Companyia.objects.all(), view_name='iSupermarket:companyia-detail')
+	sucursalreview_set = HyperlinkedRelatedField(many=True, read_only=True, view_name='iSupermarket:sucursalreview-detail')
 	user = CharField(read_only=True)
 	class Meta:
 		model = Sucursal
-		fields = ('url', 'name','location','zipCode','StateOrProvince', 'country', 'companyia','user')
+		fields = ('url', 'name','location','zipCode','StateOrProvince', 'country', 'companyia','user', 'sucursalreview_set')
 
 class MarcaSerializer(HyperlinkedModelSerializer):
 	url = HyperlinkedIdentityField(view_name='iSupermarket:marca-detail')
@@ -42,3 +43,12 @@ class CompanyiaSerializer(HyperlinkedModelSerializer):
 	class Meta:
 		model = Companyia
 		fields = ('url', 'name','user')
+
+class SucursalReviewSerializer(HyperlinkedModelSerializer):
+	url = HyperlinkedIdentityField(view_name='iSupermarket:sucursalreview-detail')
+	sucursal = HyperlinkedRelatedField(view_name='iSupermarket:sucursal-detail', read_only=True)
+	user = CharField(read_only=True)
+
+	class Meta:
+		model = SucursalReview
+		fields = ('url', 'rating', 'comment', 'user', 'date_re', 'sucursal')
