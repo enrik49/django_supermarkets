@@ -1,15 +1,19 @@
 {% extends "base.html" %}
-{% block	content	%}
+{% block title %} iSupermarket - {{sucursal}}{% endblock %}
+{% block content%}
+
+
+<span vocab="http://schema.org/" typeof="LocalBusiness">
 <h1>
-  {{ sucursal }}
+  <span property = "name">{{ sucursal.name }}</span>
+  {% if user.is_staff %}
+    (<a href="{% url 'iSupermarket:sucursal_update' sucursal.id %}">edit</a>) or
+    (<a href="{% url 'iSupermarket:sucursal_delete' sucursal.id %}">delete</a>)
+  {% elif user == client.user %}
+    (<a href="{% url 'iSupermarket:sucursal_update' sucursal.id %}">edit</a>) or 
+    (<a href="{% url 'iSupermarket:sucursal_delete' sucursal.id %}">delete</a>)
+  {% endif %}
 </h1>
- {% if user.is_staff %}
-  <a href="{% url 'iSupermarket:sucursal_update' sucursal.id %}">edit</a>
-  <a href="{% url 'iSupermarket:sucursal_delete' sucursal.id %}">delete</a>
-{% elif user == sucursal.user %}
-    <a href="{% url 'iSupermarket:sucursal_update' sucursal.id %}">edit</a>
-    <a href="{% url 'iSupermarket:sucursal_delete' sucursal.id %}">delete</a>
-{% endif %}
 
           <h2>Detalls:</h2>
           <p><ul>

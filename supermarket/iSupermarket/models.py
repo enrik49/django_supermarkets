@@ -13,7 +13,7 @@ class Companyia(models.Model):
 
 
 	def __unicode__(self):
-		return self.name
+		return u'Companyia: ' + unicode(self.name)
 
 	def get_absolute_url(self):
 		return reverse('iSupermarket:companyia_detail', kwargs={'pk':self.pk})

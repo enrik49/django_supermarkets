@@ -1,19 +1,22 @@
 {% extends "base.html" %}
+{% block title %} iSupermarket - {{companyia}}{% endblock %}
 {% block	content	%}
+
+<span vocab="http://schema.org/" typeof="organization">
 <h1>
-  {{ companyia }}
+  <span property = "name">{{ companyia.name }}</span>
+  {% if user.is_staff %}
+    (<a href="{% url 'iSupermarket:companyia_update' companyia.id %}">edit</a>) or
+    (<a href="{% url 'iSupermarket:companyia_delete' companyia.id %}">delete</a>)
+  {% elif user == client.user %}
+    (<a href="{% url 'iSupermarket:companyia_update' companyia.id %}">edit</a>) or 
+    (<a href="{% url 'iSupermarket:companyia_delete' companyia.id %}">delete</a>)
+  {% endif %}
 </h1>
-{% if user.is_staff %}
-	<a href="{% url 'iSupermarket:companyia_update' companyia.id %}">edit</a>
-	<a href="{% url 'iSupermarket:companyia_delete' companyia.id %}">delete</a>
-{% elif user == companyia.user %}
-    <a href="{% url 'iSupermarket:companyia_update' companyia.id %}">edit</a>
-	<a href="{% url 'iSupermarket:companyia_delete' companyia.id %}">delete</a>
-{% endif %}
           <h2>Detalls:</h2>
           <p>
-            NOM: {{ companyia.name }}<br/>
-            ID: {{ companyia.idNumber }}<br/>
+             Nom: {{ companyia.name }} <br/>
+             ID: {{ companyia.idNumber }}<br/>
           </p>
           <a href="{% url 'iSupermarket:companyia_list' %}">Tornar a la llista</a>
 {% endblock %}

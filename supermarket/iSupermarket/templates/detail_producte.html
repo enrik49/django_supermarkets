@@ -1,16 +1,18 @@
 {% extends "base.html" %}
+{% block title %} iSupermarket - {{producte}}{% endblock %}
 {% block	content	%}
+<span vocab="http://schema.org/" typeof="product">
 <h1>
-  {{ producte }}
- </h1>
+  <span property = "name">{{ sucursal.name }}</span>
   {% if user.is_staff %}
-  <a href="{% url 'iSupermarket:producte_update' producte.id %}">edit</a>
-  <a href="{% url 'iSupermarket:producte_delete' producte.id %}">delete</a>
-{% elif user == producte.user %}
-    <a href="{% url 'iSupermarket:producte_update' producte.id %}">edit</a>
-    <a href="{% url 'iSupermarket:producte_delete' producte.id %}">delete</a>
-{% endif %}
-          <h2>Detalls:</h2>
+    (<a href="{% url 'iSupermarket:producte_update' producte.id %}">edit</a>) or
+    (<a href="{% url 'iSupermarket:producte_delete' producte.id %}">delete</a>)
+  {% elif user == client.user %}
+    (<a href="{% url 'iSupermarket:producte_update' producte.id %}">edit</a>) or 
+    (<a href="{% url 'iSupermarket:producte_delete' producte.id %}">delete</a>)
+  {% endif %}
+</h1>
+           <h2>Detalls:</h2>
           <p>
             NOM: {{ producte.name }}<br/>
             Marca: <a href="{% url 'iSupermarket:marca_detail' producte.marca.id %}">{{ producte.marca }}</a>

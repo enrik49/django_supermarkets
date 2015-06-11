@@ -1,16 +1,18 @@
 {% extends "base.html" %}
-{% block	content	%}
+{% block title %} iSupermarket - {{marca}}{% endblock %}
+{% block  content %}
+<span vocab="http://schema.org/" typeof="brand">
 <h1>
-  {{ marca }}
+  <span property = "name">{{ marca.name }}</span>
+  {% if user.is_staff %}
+    (<a href="{% url 'iSupermarket:marca_update' marca.id %}">edit</a>) or
+    (<a href="{% url 'iSupermarket:marca_delete' marca.id %}">delete</a>)
+  {% elif user == client.user %}
+    (<a href="{% url 'iSupermarket:marca_update' marca.id %}">edit</a>) or 
+    (<a href="{% url 'iSupermarket:marca_delete' marca.id %}">delete</a>)
+  {% endif %}
 </h1>
- {% if user.is_staff %}
-  <a href="{% url 'iSupermarket:marca_update' marca.id %}">edit</a>
-  <a href="{% url 'iSupermarket:marca_delete' marca.id %}">delete</a>
-{% elif user == marca.user %}
-    <a href="{% url 'iSupermarket:marca_update' marca.id %}">edit</a>
-    <a href="{% url 'iSupermarket:marca_delete' marca.id %}">delete</a>
-{% endif %}
-
+ 
           <h2>Detalls:</h2>
           <p>
             NOM: {{ marca.name }}<br/>
