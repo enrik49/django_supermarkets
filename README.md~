@@ -12,5 +12,3 @@ git push // aquest el penjara a github tens que ficar el usuari i contrasenya qu
 
 git clone // si no tens el pojecte, per descargar
 git pull // quan sol vols baixar els continguts que s'han modificat
-
-gist pel testing data tool //  https://gist.github.com/gaudir/f9fef88cf0251775cb1f
